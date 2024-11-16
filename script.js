@@ -19,4 +19,4 @@ function updateClock_timezona() {
     document.getElementById('timezona').textContent = `${hours}:${minutes}:${ceconds}`;
 }
 
-setInterval(updateClock_timezona, 1000);
+setInterval(updateClock_timezona, 100);
