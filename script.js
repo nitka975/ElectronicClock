@@ -7,7 +7,7 @@ function updateClock(){
 
     timeZona = parseInt(selectTimeZona.value, 10);
 
-    const hours = String(now.getUTCHours() + timeZona).padStart(2, '0');
+    const hours = String((now.getUTCHours() + timeZona) % 24).padStart(2, '0');
     const minutes = String(now.getUTCMinutes()).padStart(2,'0');
     const ceconds = String(now.getUTCSeconds()).padStart(2,'0');
     
