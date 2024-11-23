@@ -1,24 +1,30 @@
-function updateClock(time){
+const selectTimeZona = document.getElementById('timeZona');
+const clockElement = document.getElementById('clock');
+const local_timeZona = document.getElementById('local_timeZona');
+
+function updateClock(){
     const now = new Date();
-    const hours = String(now.getUTCHours() + time).padStart(2, '0');
+
+    timeZona = parseInt(selectTimeZona.value, 10);
+
+    const hours = String(now.getUTCHours() + timeZona).padStart(2, '0');
     const minutes = String(now.getUTCMinutes()).padStart(2,'0');
     const ceconds = String(now.getUTCSeconds()).padStart(2,'0');
     
-    document.getElementById('clock').textContent = `${hours}:${minutes}:${ceconds}`;
+    clockElement.textContent = `${hours}:${minutes}:${ceconds}`;
 
-    timeZona = parseInt(selectTimeZona.value, 10);
     // console.log(timeZona);
+    local_timeZona.textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    
 }
 
 // updateClock(timeZona);
 
 let timeZona;
-const selectTimeZona = document.getElementById("timeZona");
 
-setInterval(updateClock(timeZona), 1000);
-updateClock(timeZona);
+setInterval(updateClock, 1000);
+selectTimeZona.addEventListener('change', updateClock);
+
 
 
 
